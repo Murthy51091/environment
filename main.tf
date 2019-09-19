@@ -66,10 +66,10 @@ resource "aws_route_table" "terraform-public" {
     gateway_id = "${aws_internet_gateway.default.id}"
   }
 
-  route {
-    cidr_block                = "10.0.0.0/16"
-    vpc_peering_connection_id = "${aws_vpc_peering_connection.connection.id}"
-  }
+  #route {
+  #  cidr_block                = "10.0.0.0/16"
+  #  vpc_peering_connection_id = "${aws_vpc_peering_connection.connection.id}"
+  #}
 
   tags = {
     Name = "${var.Main_Routing_Table}"
