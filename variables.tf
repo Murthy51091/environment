@@ -28,51 +28,51 @@ variable "amis" {
 }
 
 variable "vpc_cidr" {
-  default = "10.1.0.0/16"
+  default = "10.2.0.0/16"
 }
 
 variable "vpc_name" {
-  default = "tf vpc"
+  default = "kranthi vpc"
 }
 
 variable "IGW_name" {
-  default = "tf IGW"
+  default = "kranthi IGW"
 }
 
 variable "key_name" {
-  default = "kranthi1"
+  default = "Srinivas"
 }
 
 variable "public_subnet1_cidr" {
-  default = "10.1.1.0/24"
+  default = "10.2.1.0/24"
 }
 
 variable "public_subnet2_cidr" {
-  default = "10.1.2.0/24"
+  default = "10.2.2.0/24"
 }
 
 variable "public_subnet3_cidr" {
-  default = "10.1.3.0/24"
+  default = "10.2.3.0/24"
 }
 
 variable "private_subnet_cidr" {
-  default = "10.1.4.0/24"
+  default = "10.2.4.0/24"
 }
 
 variable "public_subnet1_name" {
-  default = "n1"
+  default = "k1"
 }
 
 variable "public_subnet2_name" {
-  default = "n2"
+  default = "k2"
 }
 
 variable "public_subnet3_name" {
-  default = "n3"
+  default = "k3"
 }
 
 variable "private_subnet_name" {
-  default = "n4"
+  default = "k4"
 }
 
 variable "Main_Routing_Table" {
