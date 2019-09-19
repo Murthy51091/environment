@@ -1,9 +1,8 @@
 provider "aws" {
-  assume_role {
-    role_arn     = "arn:aws:iam::881670337532:role/Admin"
-    session_name = "EC2"
-    external_id  = "111"
-  }
+   access_key = "${var.access_key}"
+  secret_key = "${var.secret_key}"
+   region     = "us-east-1"
+  profile    = "default"
 
   region  = "us-east-1"
   profile = "default"
@@ -142,38 +141,38 @@ resource "aws_vpc_peering_connection" "connection" {
   }
 }
 
-resource "null_resource" "delay" {
-  provisioner "local-exec" {
-    command = "sleep 100"
-  }
-}
+#resource "null_resource" "delay" {
+ # provisioner "local-exec" {
+ #   command = "sleep 100"
+ # }
+#}
 
-resource "null_resource" "remote" {
-  provisioner "remote-exec" {
-    connection {
-      type = "ssh"
-      host = "${aws_instance.default.public_ip}"
+#resource "null_resource" "remote" {
+#  provisioner "remote-exec" {
+ #   connection {
+  #    type = "ssh"
+   #   host = "${aws_instance.default.public_ip}"
+#
+ #     # host       =  "18.191.225.60"
+  #    user        = "ubuntu"
+   #   private_key = "${file("private_key")}"
+    #  agent       = false
+     # timeout     = "100s"
+    #}
 
-      # host       =  "18.191.225.60"
-      user        = "ubuntu"
-      private_key = "${file("private_key")}"
-      agent       = false
-      timeout     = "100s"
-    }
-
-    inline = [
-      "sudo mkdir /root/test",
-      "sudo chmod 777 /root/test/",
-    ]
+    #inline = [
+    #  "sudo mkdir /root/test",
+    #  "sudo chmod 777 /root/test/",
+    #]
 
     #"apt instal python-pip -y",
-  }
+  #}
 
-  provisioner "local-exec" {
+  #provisioner "local-exec" {
     #   command = "ansible-playbook -u ubuntu -i '${aws_instance.default.public_ip},'  --private-key "${file("private_key")}" provision.yml"
     #    command = "ansible -i hosts -u ubuntu --private-key /root/.ssh/kranthi1.pem  all -m ping"
-    command = " ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i /home/ubuntu/terraform/hosts  provision.yml -u ubuntu   --private-key /root/.ssh/kranthi1.pem"
+   # command = " ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i /home/ubuntu/terraform/hosts  provision.yml -u ubuntu   --private-key /root/.ssh/kranthi1.pem"
 
     #     command = " ANSIBLE_HOST_KEY_CHECKING=False ansible -i hosts -u ubuntu --private-key /root/.ssh/kranthi1.pem  all -m ping"
-  }
-}
+  #}
+#}
