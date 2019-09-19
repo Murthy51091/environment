@@ -122,24 +122,24 @@ resource "aws_instance" "default" {
   }
 }
 
-resource "aws_vpc_peering_connection" "connection" {
-  peer_owner_id = "881670337532"
-  peer_vpc_id   = "vpc-04147e52dae505453"
-  vpc_id        = "${aws_vpc.default.id}"
-  auto_accept   = true
+#resource "aws_vpc_peering_connection" "connection" {
+ # peer_owner_id = "881670337532"
+ # peer_vpc_id   = "vpc-04147e52dae505453"
+ # vpc_id        = "${aws_vpc.default.id}"
+ # auto_accept   = true
 
-  tags = {
-    Name = "VPC Peering "
-  }
+#  tags = {
+ #   Name = "VPC Peering "
+ # }
 
-  accepter {
-    allow_remote_vpc_dns_resolution = true
-  }
+  #accepter {
+   # allow_remote_vpc_dns_resolution = true
+  #}
 
-  requester {
-    allow_remote_vpc_dns_resolution = true
-  }
-}
+  #requester {
+   # allow_remote_vpc_dns_resolution = true
+  #}
+#}
 
 #resource "null_resource" "delay" {
  # provisioner "local-exec" {
