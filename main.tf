@@ -167,7 +167,7 @@ resource "aws_instance" "default" {
      #  ]
 
     # "apt instal python-pip -y",
-  }
+  #}
 
   #provisioner "local-exec" {
     #   command = "ansible-playbook -u ubuntu -i '${aws_instance.default.public_ip},'  --private-key "${file("private_key")}" provision.yml"
