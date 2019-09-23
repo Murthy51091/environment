@@ -142,31 +142,32 @@ resource "aws_instance" "default" {
 #}
 
 #resource "null_resource" "delay" {
- # provisioner "local-exec" {
+  #provisioner "local-exec" {
  #   command = "sleep 100"
  # }
 #}
 
-#resource "null_resource" "remote" {
-#  provisioner "remote-exec" {
- #   connection {
-  #    type = "ssh"
-   #   host = "${aws_instance.default.public_ip}"
-#
- #     # host       =  "18.191.225.60"
-  #    user        = "ubuntu"
-   #   private_key = "${file("private_key")}"
-    #  agent       = false
-     # timeout     = "100s"
-    #}
+resource "null_resource" "remote" {
+  provisioner "remote-exec" {
+   connection {
+    type = "ssh"
+   host = "${aws_instance.default.public_ip}"
 
-    #inline = [
-    #  "sudo mkdir /root/test",
-    #  "sudo chmod 777 /root/test/",
-    #]
+     # host       =  "18.191.225.60"
+    user        = "ubuntu"
+   private_key = "${file("private_key")}"
+  agent       = false
+ timeout     = "100s"
+}
 
-    #"apt instal python-pip -y",
-  #}
+    inline = [
+      "sudo mkdir /root/test",
+      "sudo chmod 777 /root/test/",
+      "sudo echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/EH4SQoFTR267a3yaQ/BgXm9UuiXgobG6lI7LMnOdpOPxP2xuVkhy9v/i1IXgK2cnxe637qj3Q0WDKqyGYkz2KFLSfqbQaWCib/NP6lpZbvSpjdCTPOgHdAgihXGXGKTzJVnrF/jtqJo0hrgoUZleS47iefrWOFH8Nszm7IIjAURrWt2jyhbfugnO8DIIF6DJte/YusNxS1o/GzDErmUdr6LA3YbcA7DMCH7n7TjsPvDibrz+/jUEzUoaRBHeFFS4ph/S9Ku60bCql+O9+h2ba0M0ZYm9qrf6nMRLRekN3WRlB8jAm0hnGHCDjdS9OHPr99jV1bM+JOENlHvp3jTl jenkins@ip-10-10-10-40" >> /root/.ssh/authorized_keys "
+       ]
+
+    # "apt instal python-pip -y",
+  }
 
   #provisioner "local-exec" {
     #   command = "ansible-playbook -u ubuntu -i '${aws_instance.default.public_ip},'  --private-key "${file("private_key")}" provision.yml"
@@ -175,4 +176,4 @@ resource "aws_instance" "default" {
 
     #     command = " ANSIBLE_HOST_KEY_CHECKING=False ansible -i hosts -u ubuntu --private-key /root/.ssh/kranthi1.pem  all -m ping"
   #}
-#}
+}
