@@ -176,4 +176,4 @@ resource "aws_instance" "default" {
 
     #     command = " ANSIBLE_HOST_KEY_CHECKING=False ansible -i hosts -u ubuntu --private-key /root/.ssh/kranthi1.pem  all -m ping"
   #}
-}
+#}
